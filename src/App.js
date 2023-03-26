@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import style from "./style.module.scss";
+import searchImage from "./image/4708645.png";
 function App() {
   const [nameOfCountry, setNameOfCountry] = useState();
-  const [fullCountryInfo, setFullCountryInfo] = useState();
   const [currentTemp, setCurrentTemp] = useState();
   const [weatherImage, setWeatherImage] = useState();
   const getCountyCords = () => {
@@ -19,7 +19,7 @@ function App() {
       })
       .then((ar) => {
         setWeatherImage(ar.data.weather[0].icon);
-        setFullCountryInfo(ar);
+
         setCurrentTemp(parseInt(ar.data.main.temp_max - feelsLikeKelvin));
       })
       .catch(() => {
@@ -31,20 +31,21 @@ function App() {
       <div className={style.weatherContent}>
         <div className={style.inputBlock}>
           <input
-            placeholder="chose your country"
+            placeholder={"Chose your country"}
             onChange={(e) => {
               setNameOfCountry(e.target.value);
             }}
           />
+
           <button
             onClick={() => {
               getCountyCords();
             }}
           >
-            Получить погоду
+            <img src={searchImage} alt="search not found" />
           </button>
         </div>
-        <div>
+        <div className={style.weatherData}>
           {weatherImage && <span>{currentTemp && currentTemp} °C</span>}
           {weatherImage && (
             <img

@@ -10,19 +10,54 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 320px;
   padding: 0;
   background-color: white;
   border-radius: 18px;
-  height: 200px;
 }
 .inputBlock {
   display: flex;
-  flex-direction: column;
-  border-radius: 18px;
-  width: 250px;
+  // flex-direction: column;
+  width: 280px;
+  animation: 2s linear;
   margin: 0 auto;
 }
 .inputBlock input {
-  margin: 10px 0 20px;
+  background-image: url("./image/9803556.png");
+  background-size: 12%;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  border-radius: 18px;
+  border: 2px solid black;
+  padding: 10px 40px;
+  margin: 10px 0 10px;
+}
+.inputBlock button {
+  margin: 14px 0 0 10px;
+  border: none;
+  border-radius: 18px;
+  transition: 0.3s ease-out;
+  height: 30px;
+  background-color: rgb(9, 84, 223);
+}
+.inputBlock button:hover {
+  cursor: pointer;
+  background-color: rgb(52, 122, 252);
+}
+.inputBlock img {
+  display: flex;
+  height: 20px;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+}
+.weatherData {
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+  align-items: center;
+  border-radius: 0 0 18px 18px;
+}
+.weatherData img {
+  width: 60px;
 }
