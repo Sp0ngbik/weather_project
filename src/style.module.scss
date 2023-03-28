@@ -17,7 +17,6 @@
 }
 .inputBlock {
   display: flex;
-  // flex-direction: column;
   width: 280px;
   animation: 2s linear;
   margin: 0 auto;
@@ -51,13 +50,24 @@
   justify-items: center;
   justify-content: center;
 }
-.weatherData {
+.weatherDataStyle {
   display: flex;
-  justify-content: center;
   background-color: blue;
   align-items: center;
+  justify-content: center;
   border-radius: 0 0 18px 18px;
 }
-.weatherData img {
+.weatherDataStyle img {
   width: 60px;
+}
+.temperatureStyle {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  transition: height 0.5s ease-out;
+}
+.temperatureStyle h3 {
+  font-size: 15px;
+  font-weight: 500;
 }
