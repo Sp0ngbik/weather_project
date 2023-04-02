@@ -28,7 +28,7 @@ function App() {
         setOpenInfoWeather(true);
       })
       .catch(() => {
-        alert("Sorry, but your country was not found");
+        alert(`Sorry, but your country ${nameOfCountry} was not found`);
       });
   };
 
