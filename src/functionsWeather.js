@@ -11,7 +11,3 @@ export const currentData = (timeZone, dt) => {
   const formattedDateTime = `${day}.${month}.${year}, ${hours}:${minutes}:${seconds}, ${dayOfWeek}`;
   return formattedDateTime;
 };
-
-export const currentWeatherData = (countrysCounter) => {
-  for (let counter = 0; counter <= countrysCounter.length; counter++) {}
-};

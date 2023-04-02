@@ -2,12 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import style from "./style.module.scss";
 import searchImage from "./image/4708645.png";
-import { currentData, currentWeatherData } from "./functionsWeather";
+import { currentData } from "./functionsWeather";
 function App() {
   const [nameOfCountry, setNameOfCountry] = useState();
   const [weatherData, setWeatherData] = useState();
   const [currentTemp, setCurrentTemp] = useState();
-  const [openInfoWeather, setopenInfoWeather] = useState();
+  const [openInfoWeather, setOpenInfoWeather] = useState();
 
   const getCountyCords = () => {
     const feelsLikeKelvin = 273.15;
@@ -25,7 +25,7 @@ function App() {
         setCurrentTemp(
           parseInt(weatherData.data.main.temp_max - feelsLikeKelvin)
         );
-        setopenInfoWeather(true);
+        setOpenInfoWeather(true);
       })
       .catch(() => {
         alert("Sorry, but your country was not found");
@@ -52,30 +52,29 @@ function App() {
           </button>
         </div>
         <div className={style.weatherDataStyle}>
-          {
-            weatherData && currentWeatherData(weatherData)
-            //   <div
-            //   className={`${style.temperatureStyle} ${
-            //     openInfoWeather ?? style.openInfo
-            //   }`}
-            //   >
-            //   <div className={style.mainInfo}>
-            //   <h3>Country: {weatherData.data.sys.country}</h3>
-            //   <div>
-            //       <span>{currentTemp && currentTemp} °C</span>
-            //       <img
-            //         src={`https://openweathermap.org/img/wn/${weatherData.data.weather[0].icon}@2x.png`}
-            //         alt="Sorry but your country not found"
-            //         />
-            //     </div>
-            //     <span>{weatherData.data.weather[0].main}</span>
-            //     <span>{weatherData.data.weather[0].description}</span>
-            //     </div>
-            //     <div>
-            //     {currentData(weatherData.data.timezone, weatherData.data.dt)}
-            //   </div>
-            // </div>
-          }
+          {weatherData && (
+            <div
+              className={`${style.temperatureStyle} ${
+                openInfoWeather ?? style.openInfo
+              }`}
+            >
+              <div className={style.mainInfo}>
+                <h3>Country: {weatherData.data.sys.country}</h3>
+                <div>
+                  <span>{currentTemp && currentTemp} °C</span>
+                  <img
+                    src={`https://openweathermap.org/img/wn/${weatherData.data.weather[0].icon}@2x.png`}
+                    alt="Sorry but your country not found"
+                  />
+                </div>
+                <span>{weatherData.data.weather[0].main}</span>
+                <span>{weatherData.data.weather[0].description}</span>
+              </div>
+              <div>
+                {currentData(weatherData.data.timezone, weatherData.data.dt)}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
