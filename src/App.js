@@ -2,16 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 import style from "./style.module.scss";
 import searchImage from "./image/4708645.png";
-import { currentData } from "./functionsWeather";
+import humiditiImage from "./image/2120124.png";
+import windSpeed from "./image/1233333.png";
 function App() {
   const [nameOfCountry, setNameOfCountry] = useState();
   const [weatherData, setWeatherData] = useState();
   const [currentTemp, setCurrentTemp] = useState();
-  const [openInfoWeather, setOpenInfoWeather] = useState();
 
+  const apiKey = "5eac858cbc638bf9cf41fef1f454746f";
   const getCountyCords = () => {
     const feelsLikeKelvin = 273.15;
-    const apiKey = "5eac858cbc638bf9cf41fef1f454746f";
     const apiRequest = `http://api.openweathermap.org/geo/1.0/direct?q=${nameOfCountry}&limit=5&appid=${apiKey}`;
     axios
       .get(apiRequest)
@@ -25,7 +25,6 @@ function App() {
         setCurrentTemp(
           parseInt(weatherData.data.main.temp_max - feelsLikeKelvin)
         );
-        setOpenInfoWeather(true);
       })
       .catch(() => {
         alert(`Sorry, but your country ${nameOfCountry} was not found`);
@@ -53,11 +52,7 @@ function App() {
         </div>
         <div className={style.weatherDataStyle}>
           {weatherData && (
-            <div
-              className={`${style.temperatureStyle} ${
-                openInfoWeather ?? style.openInfo
-              }`}
-            >
+            <div className={style.temperatureStyle}>
               <div className={style.mainInfo}>
                 <h3>Country: {weatherData.data.sys.country}</h3>
                 <div>
@@ -68,10 +63,16 @@ function App() {
                   />
                 </div>
                 <span>{weatherData.data.weather[0].main}</span>
-                <span>{weatherData.data.weather[0].description}</span>
-              </div>
-              <div>
-                {currentData(weatherData.data.timezone, weatherData.data.dt)}
+                <div className={style.humiditiStyle}>
+                  <div>
+                    <span>{weatherData.data.main.humidity}%</span>
+                    <img src={humiditiImage} alt="humidity not found" />
+                  </div>
+                  <div>
+                    <span>{weatherData.data.wind.speed}Km/h</span>
+                    <img src={windSpeed} alt="wind speed not found" />
+                  </div>
+                </div>
               </div>
             </div>
           )}
