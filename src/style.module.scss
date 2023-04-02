@@ -10,33 +10,36 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320px;
+  width: 50%;
   padding: 0;
   background-color: white;
   border-radius: 18px;
 }
 .inputBlock {
   display: flex;
-  width: 280px;
+  width: 90%;
   animation: 2s linear;
   margin: 0 auto;
 }
 .inputBlock input {
   background-image: url("./image/9803556.png");
-  background-size: 12%;
+  background-size: 6%;
   background-repeat: no-repeat;
   background-position: 10px center;
   border-radius: 18px;
   border: 2px solid black;
-  padding: 10px 40px;
+  width: 80%;
+  height: 50px;
+  font-size: 24px;
+  padding: 10px 60px;
   margin: 10px 0 10px;
 }
 .inputBlock button {
-  margin: 14px 0 0 10px;
+  margin: 10px 0 0 10px;
   border: none;
-  border-radius: 18px;
+  border-radius: 35px;
   transition: 0.3s ease-out;
-  height: 30px;
+  height: 70px;
   background-color: rgb(9, 84, 223);
 }
 .inputBlock button:hover {
@@ -45,7 +48,7 @@
 }
 .inputBlock img {
   display: flex;
-  height: 20px;
+  height: 60px;
   align-content: center;
   justify-items: center;
   justify-content: center;
@@ -53,21 +56,25 @@
 .weatherDataStyle {
   display: flex;
   background-color: blue;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   border-radius: 0 0 18px 18px;
+  text-align: center;
 }
 .weatherDataStyle img {
   width: 60px;
 }
-.temperatureStyle {
+.weatherDataStyle span {
   display: flex;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
+  flex-direction: column;
   transition: height 0.5s ease-out;
 }
+.temperatureStyle {
+  display: grid;
+  margin: 20px 0;
+  grid-template-columns: 1fr 1fr;
+}
 .temperatureStyle h3 {
-  font-size: 15px;
+  margin: 0;
+  font-size: 20px;
   font-weight: 500;
 }
