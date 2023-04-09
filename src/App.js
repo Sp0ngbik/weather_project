@@ -4,11 +4,12 @@ import style from "./style.module.scss";
 import searchImage from "./image/4708645.png";
 import humiditiImage from "./image/2120124.png";
 import windSpeed from "./image/1233333.png";
+import { backroundWeatherFunc } from "./backgroundImageFunction";
 function App() {
   const [nameOfCountry, setNameOfCountry] = useState();
   const [weatherData, setWeatherData] = useState();
   const [currentTemp, setCurrentTemp] = useState();
-
+  const [openInfo, setOpenInfo] = useState(false);
   const apiKey = "5eac858cbc638bf9cf41fef1f454746f";
   const getCountyCords = () => {
     const feelsLikeKelvin = 273.15;
@@ -44,6 +45,8 @@ function App() {
 
           <button
             onClick={() => {
+              setOpenInfo(true);
+
               getCountyCords();
             }}
           >
@@ -52,8 +55,13 @@ function App() {
         </div>
         <div className={style.weatherDataStyle}>
           {weatherData && (
-            <div className={style.temperatureStyle}>
-              <div className={style.mainInfo}>
+            <div className={openInfo ? style.mainInfo : style.closeInfo}>
+              <img
+                className={style.backgroundImage}
+                src={backroundWeatherFunc(weatherData.data.weather[0].main)}
+                alt="Weather back not found"
+              />
+              <div className={style.temperatureStyle}>
                 <h3>Country: {weatherData.data.sys.country}</h3>
                 <div>
                   <span>{currentTemp && currentTemp} °C</span>
@@ -73,6 +81,13 @@ function App() {
                     <img src={windSpeed} alt="wind speed not found" />
                   </div>
                 </div>
+                <button
+                  onClick={() => {
+                    setOpenInfo(false);
+                  }}
+                >
+                  Close
+                </button>
               </div>
             </div>
           )}
