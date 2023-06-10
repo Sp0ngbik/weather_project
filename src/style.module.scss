@@ -19,27 +19,30 @@
   display: flex;
   width: 90%;
   margin: 0 auto;
+  align-items: center;
 }
 
 .inputBlock input {
   background-image: url("./image/9803556.png");
-  background-size: 2.5vw;
+  background-size: 2vw;
   background-repeat: no-repeat;
   background-position: 10px center;
   border-radius: 18px;
   border: 2px solid black;
   width: 80%;
-  height: 50px;
+  height: 30px;
   font-size: 24px;
   padding: 10px 60px;
   margin: 10px 0 10px;
 }
 .inputBlock button {
-  margin: 10px 0 0 10px;
+  margin: 0 0 0 10px;
+  display: flex;
+  align-items: center;
   border: none;
   border-radius: 35px;
   transition: 0.3s ease-out;
-  height: 70px;
+  height: 50px;
   background-color: rgb(9, 84, 223);
 }
 .inputBlock button:hover {
@@ -48,7 +51,7 @@
 }
 .inputBlock img {
   display: flex;
-  height: 60px;
+  height: 40px;
   align-content: center;
   justify-items: center;
   justify-content: center;
@@ -69,12 +72,8 @@
   width: 60px;
 }
 
-.temperatureStyle span {
-  font-size: 25px;
-}
 .temperatureStyle h3 {
   margin: 0;
-  font-size: 30px;
   font-weight: 500;
 }
 .humiditiStyle {
@@ -89,7 +88,7 @@
 }
 .backgroundImage {
   position: absolute;
-  height: 77%;
+  height: 81%;
   display: block;
   border-radius: 0 0 18px 18px;
   z-index: -1;
@@ -147,5 +146,37 @@
   100% {
     opacity: 0;
     height: 0px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .temperatureStyle {
+    font-size: 20px;
+  }
+  .inputBlock input {
+    padding: 10px 20px;
+    font-size: 15px;
+    padding: 10px 40px;
+  }
+  .weatherContent {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .weatherContent {
+    width: 90%;
+  }
+  .inputBlock img {
+    height: 20px;
+  }
+  .inputBlock button {
+    height: 30px;
+  }
+  .inputBlock input {
+    padding: 10px 20px;
+    height: 10px;
+  }
+  .backgroundImage {
+    height: 85%;
   }
 }
